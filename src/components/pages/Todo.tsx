@@ -25,17 +25,22 @@ class Todo extends Component<any, IState> {
             tasks: [
                 {
                     title: "title 1",
-                    description: "hi ",
+                    description: "this is testing description 1",
                     isDone: false
                 },
                 {
                     title: "title 2",
-                    description: "hi ",
+                    description: "this is testing description 2 ",
+                    isDone: false
+                },
+                {
+                    title: "title 4",
+                    description: "this is testing description 4 ",
                     isDone: false
                 },
                 {
                     title: "title 3",
-                    description: "hi ",
+                    description: "this is testing description 3 ",
                     isDone: true
                 },
             ]
@@ -63,7 +68,7 @@ class Todo extends Component<any, IState> {
         const {tasks} = this.state;
         let index: number | undefined;
         index = findIndex(tasks ,{title ,description, isDone});
-        if (tasks && index) {
+        if (tasks ) {
             tasks[index].isDone = true;
         }
         this.setState({tasks:tasks})
@@ -73,6 +78,7 @@ class Todo extends Component<any, IState> {
         const {isOpen , tasks} = this.state;
         return (
             <div className="p-9 ">
+                <div className="text-3xl font-bold">Cabbage todo app</div>
                 <Row>
                     <Col span={12} offset={6}>
                         <CustomButton text={'Add task'}
@@ -90,7 +96,7 @@ class Todo extends Component<any, IState> {
                 {!isEmpty(tasks) && (
                     <Row className="p-9 flex">
                         <Col className="grid justify-items-center" span={12}>
-                            <div className="text-3xl">Todo</div>
+                            <div className="text-3xl text-center">Todo list</div>
                             <Space direction="vertical">
                                 {tasks?.filter(item => item.isDone === false).map((task,index) =>{
                                     return (
@@ -98,6 +104,7 @@ class Todo extends Component<any, IState> {
                                               extra={
                                                   <Row className="flex items-center">
                                                       <Col className="m-1" span={11}
+                                                           style={{cursor: 'pointer'}}
                                                            onClick={()=>this.moveToDone(task)}>
                                                           DONE
                                                       </Col>
@@ -118,7 +125,7 @@ class Todo extends Component<any, IState> {
                             </Space>
                         </Col>
                         <Col span={12}>
-                            <div className="text-3xl">Done</div>
+                            <div className="text-3xl text-center">Done list</div>
                             <Space direction="vertical">
                                 {tasks?.filter(item => item.isDone === true).map((task,index) =>{
                                     return (
