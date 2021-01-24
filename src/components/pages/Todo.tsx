@@ -7,7 +7,6 @@ class Todo extends Component{
     public render() {
         return(
             <div>
-                Todo
                 <CustomButton text={'Submit from p'}
                               buttonClick={()=>console.log('submit')}/>
             </div>
